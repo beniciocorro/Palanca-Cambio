@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PalancaDeCambio : MonoBehaviour
+public class PalancaDeCambio : Simulator
 {
     public enum Marcha
     {
@@ -15,6 +15,14 @@ public class PalancaDeCambio : MonoBehaviour
     }
 
     public Marcha marchaActual = Marcha.Neutro;
+
+    [SerializeField] private Creadores creadores;
+
+    private void Start()
+    {
+        AsignarCreador(creadores);
+        Describir();
+    }
 
     void Update()
     {
@@ -50,5 +58,15 @@ public class PalancaDeCambio : MonoBehaviour
             marchaActual = nuevaMarcha;
             Debug.Log("Marcha actual: " + marchaActual.ToString());
         }
+    }
+
+    public override void Describir()
+    {
+        Debug.Log("Soy la palanca de cambio, hija de Simulator");
+    }
+
+    public override void AsignarCreador(Creadores creador)
+    {
+        CreadoresSimulator = creador;
     }
 }
