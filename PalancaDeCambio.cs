@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.InputSystem.HID.HID;
 
 public class PalancaDeCambio : Simulator
 {
@@ -16,6 +17,17 @@ public class PalancaDeCambio : Simulator
 
     public Marcha marchaActual = Marcha.Neutro;
 
+    [Header("Configuración de Teclas")]
+    [SerializeField] private KeyCode teclaNeutro;
+    [SerializeField] private KeyCode teclaPrimera;
+    [SerializeField] private KeyCode teclaSegunda;
+    [SerializeField] private KeyCode teclaTercera;
+    [SerializeField] private KeyCode teclaCuarta;
+    [SerializeField] private KeyCode teclaQuinta;
+    [SerializeField] private KeyCode teclaSexta;
+    [SerializeField] private KeyCode teclaReversa;
+
+    [Header("Creador")]
     [SerializeField] private Creadores creadores;
 
     private void Start()
@@ -24,34 +36,34 @@ public class PalancaDeCambio : Simulator
         Describir();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(teclaNeutro))
             CambiarMarcha(Marcha.Neutro);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(teclaPrimera))
             CambiarMarcha(Marcha.Primera);
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(teclaSegunda))
             CambiarMarcha(Marcha.Segunda);
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(teclaTercera))
             CambiarMarcha(Marcha.Tercera);
 
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(teclaCuarta))
             CambiarMarcha(Marcha.Cuarta);
 
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(teclaQuinta))
             CambiarMarcha(Marcha.Quinta);
 
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+        if (Input.GetKeyDown(teclaSexta))
             CambiarMarcha(Marcha.Sexta);
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(teclaReversa))
             CambiarMarcha(Marcha.Reversa);
     }
 
-    void CambiarMarcha(Marcha nuevaMarcha)
+    private void CambiarMarcha(Marcha nuevaMarcha)
     {
         if (marchaActual != nuevaMarcha)
         {
