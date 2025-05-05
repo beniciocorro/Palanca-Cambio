@@ -1,2 +1,0 @@
-# Palanca-Cambio
-Proyecto Unity.
